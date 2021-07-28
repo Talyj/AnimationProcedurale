@@ -20,7 +20,7 @@ public class SpawnBoids : MonoBehaviour
         if (_cooldownRespawn <= 0)
         {
             _allBoids = FindObjectsOfType<BehaviourBoids>();
-            if (_allBoids.Length <= 40)
+            if (_allBoids.Length <= 80)
             {
                 _cooldownRespawn = 5;
                 for (int i = 0; i < nbBoids; ++i)
