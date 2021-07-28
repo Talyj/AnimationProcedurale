@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Julien\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Julien\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_animationPro.1761897472.00" t="ExcludeRecursive" />
+    <e p="D:\ESGI\2020-2021\Blender(3D)\AnimationProcedurale\animationPro" t="IncludeRecursive">
+      <e p="animationPro.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Script" t="Include">
+          <e p="Boids" t="Include">
+            <e p="AlignementBehaviour.cs" t="Include" />
+            <e p="BehaviourBoids.cs" t="Include" />
+            <e p="CohesionBehaviour.cs" t="Include" />
+            <e p="ContainerBehaviour.cs" t="Include" />
+            <e p="InverseMagnetismBehaviour.cs" t="Include" />
+            <e p="LifeBehaviour.cs" t="Include" />
+            <e p="SpawnBoids.cs" t="Include" />
+          </e>
+          <e p="Movement.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
