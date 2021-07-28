@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class Movement : MonoBehaviour
     
     //TP
     public Transform[] tps;
+    
+    //Rendu
+    public GameObject bigChunk;
 
     void Update()
     {
         CameraMovement();
         KeyboardMovement();
         Teleport();
+        ChangeScene();
+        Quit();
         lastDirectionIntent = lastDirectionIntent.normalized;
     }
 
@@ -28,6 +34,14 @@ public class Movement : MonoBehaviour
         gameObject.transform.localPosition += lastDirectionIntent * (Time.deltaTime * speed);
     }
 
+    private void Quit()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+    
     private void CameraMovement()
     {
         float rotationY = Input.GetAxis("Mouse Y")*sensitivityX;
@@ -70,23 +84,62 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void ChangeScene()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Scene1":
+                    SceneManager.LoadScene("Scene2");
+                    break;
+                case "Scene2":
+                    SceneManager.LoadScene("Scene1");
+                    break;
+            }
+        }
+    }
+
+    private void activeOrNot(GameObject objectToSet)
+    {
+        if (objectToSet.activeSelf)
+        {
+            objectToSet.SetActive(false);
+        }
+        else
+        {
+            objectToSet.SetActive(true);
+        }
+    }
+
     private void Teleport()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (tps.Length > 0)
         {
-            gameObject.transform.position = tps[0].position;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameObject.transform.position = tps[1].position;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gameObject.transform.position = tps[2].position;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            gameObject.transform.position = tps[3].position;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                gameObject.transform.position = tps[0].position;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                gameObject.transform.position = tps[1].position;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                gameObject.transform.position = tps[2].position;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                gameObject.transform.position = tps[3].position;
+            }
+
+            if (SceneManager.GetActiveScene().name == "Scene1")
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    activeOrNot(bigChunk);
+                }   
+            }
         }
     }
 }
